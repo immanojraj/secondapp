@@ -1,10 +1,10 @@
 import styled from "styled-components";
-// import ImgSlider from "./ImgSlider";
-// import NewDisney from "./NewDisney";
-// import Originals from "./Originals";
-// import Recommends from "./Recommends";
+import ImgSlider from "./ImgSlider";
+import NewDisney from "./NewDisney";
+//import Originals from "./Originals";
+import Recommends from "./Recommends";
 // import Trending from "./Trending";
-// import Viewers from "./Viewers";
+import Viewers from "./Viewers";
 //import { useEffect } from "react";
 //import { useDispatch, useSelector } from "react-redux";
 //import db from "../firebase";
@@ -56,10 +56,11 @@ const Home = (props) => {
 
   return (
     <Container>
-      {/* <ImgSlider />
-      <Viewers />
-      <Recommends />
-      <NewDisney />
+        <ImgSlider />
+        <Viewers />
+        <Recommends />
+        <NewDisney />
+      {/*
       <Originals />
       <Trending /> */}
     </Container>
