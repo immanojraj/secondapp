@@ -52,17 +52,16 @@ const Home = (props) => {
         })
       );
     });
-   },);
+  }, [userName]);
 
   return (
     <Container>
-        <ImgSlider />
-        <Viewers />
-        <Recommends />
-        <NewDisney />
-      {/*
+      <ImgSlider />
+      <Viewers />
+      <Recommends />
+      <NewDisney />
       <Originals />
-      <Trending /> */}
+      <Trending />
     </Container>
   );
 };
