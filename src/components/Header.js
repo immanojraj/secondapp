@@ -1,60 +1,60 @@
-//import { useEffect } from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
-//import { useDispatch, useSelector } from "react-redux";
-//import { useNavigate } from "react-router-dom";
-//import { auth, provider } from "../firebase";
-// import {
-//     selectUserName,
-//     selectUserPhoto,
-//     setUserLoginDetails,
-//     setSignOutState,
-// } from "../features/user/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { auth, provider } from "../firebase";
+import {
+  selectUserName,
+  selectUserPhoto,
+  setUserLoginDetails,
+  setSignOutState,
+} from "../features/user/userSlice";
 
 const Header = (props) => {
-  //const dispatch = useDispatch();
-  //const history = useNavigate();
-  //const userName = useSelector(selectUserName);
-  //const userPhoto = useSelector(selectUserPhoto);
+  const dispatch = useDispatch();
+  const history = useNavigate();
+  const userName = useSelector(selectUserName);
+  const userPhoto = useSelector(selectUserPhoto);
 
-//   useEffect(() => {
-//     auth.onAuthStateChanged(async (user) => {
-//       if (user) {
-//         setUser(user);
-//         history.push("/home");
-//       }
-//     });
-//   }, [userName]);
+  useEffect(() => {
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        setUser(user);
+        history.push("/home");
+      }
+    });
+  }, [userName]);
 
-//   const handleAuth = () => {
-//     if (!userName) {
-//       auth
-//         .signInWithPopup(provider)
-//         .then((result) => {
-//           setUser(result.user);
-//         })
-//         .catch((error) => {
-//           alert(error.message);
-//         });
-//     } else if (userName) {
-//       auth
-//         .signOut()
-//         .then(() => {
-//           dispatch(setSignOutState());
-//           history.push("/");
-//         })
-//         .catch((err) => alert(err.message));
-//     }
-//   };
+  const handleAuth = () => {
+    if (!userName) {
+      auth
+        .signInWithPopup(provider)
+        .then((result) => {
+          setUser(result.user);
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
+    } else if (userName) {
+      auth
+        .signOut()
+        .then(() => {
+          dispatch(setSignOutState());
+          history.push("/");
+        })
+        .catch((err) => alert(err.message));
+    }
+  };
 
-//   const setUser = (user) => {
-//     dispatch(
-//       setUserLoginDetails({
-//         name: user.displayName,
-//         email: user.email,
-//         photo: user.photoURL,
-//       })
-//     );
-//   };
+  const setUser = (user) => {
+    dispatch(
+      setUserLoginDetails({
+        name: user.displayName,
+        email: user.email,
+        photo: user.photoURL,
+      })
+    );
+  };
 
   return (
     <Nav>
@@ -62,9 +62,9 @@ const Header = (props) => {
         <img src="/images/logo.svg" alt="Disney+" />
       </Logo>
 
-      {/* {!userName ? (
+      {!userName ? (
         <Login onClick={handleAuth}>Login</Login>
-      ) : ( */}
+      ) : (
         <>
           <NavMenu>
             <a href="/home">
@@ -92,14 +92,14 @@ const Header = (props) => {
               <span>SERIES</span>
             </a>
           </NavMenu>
-          {/* <SignOut>
+          <SignOut>
             <UserImg src={userPhoto} alt={userName} />
             <DropDown>
               <span onClick={handleAuth}>Sign out</span>
             </DropDown>
-          </SignOut> */}
+          </SignOut>
         </>
-      {/* )} */}
+      )}
     </Nav>
   );
 };
